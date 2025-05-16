@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bamboo Hero Banner with Animation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #b3e6a1, #daf2d9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .hero-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      width: 90vw;
+      background: #f0fbf0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 24px;
+      padding: 3rem 4rem;
+      gap: 3rem;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      flex: 1;
+      color: #2c5a24;
+    }
+
+    .hero-text h1 {
+      font-size: 3.6rem;
+      margin: 0 0 1rem 0;
+      line-height: 1.1;
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.08);
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #497b40;
+    }
+
+    .btn-primary {
+      background-color: #4caf50;
+      color: white;
+      font-size: 1.2rem;
+      padding: 0.9rem 2.5rem;
+      border: none;
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.45);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #3a9c3a;
+      outline: none;
+    }
+
+    /* Bamboo container */
+   .bamboo-container {
+    display: flex;
+    flex-shrink: 0;
+    gap: 3.5rem;
+    margin-right: 6rem;
+  }
+
+  .bamboo-stalk {
+    position: relative;
+    width: 60px;
+    height: 350px;
+    background: linear-gradient(180deg, #4caf50 0%, #1b5e20 100%);
+    border-radius: 30px 30px 15px 15px;
+    transform-origin: bottom center;
+    animation: sway 4s ease-in-out infinite;
+    box-shadow: inset 0 8px 20px rgba(255, 255, 255, 0.3);
+  }
+  /* second stalk sway delay */
+  .bamboo-stalk.second {
+    animation-delay: 2s;
+  }
+
+  /* bamboo segments on each stalk */
+  .bamboo-segment {
+    position: absolute;
+    width: 52px;
+    height: 55px;
+    background: #2e7d32;
+    border-radius: 30px 30px 15px 15px;
+    border-top: 12px solid #81c784;
+    left: 4px;
+  }
+  .segment1 {
+    bottom: 0;
+  }
+  .segment2 {
+    bottom: 70px;
+  }
+  .segment3 {
+    bottom: 140px;
+  }
+  .segment4 {
+    bottom: 210px;
+  }
+  .segment5 {
+    bottom: 280px;
+  }
+
+  /* leaves attached to stalk */
+  .leaf {
+    position: absolute;
+    background: linear-gradient(45deg, #a8d5a2, #4caf50);
+    border-radius: 80% 20% 40% 60% / 40% 80% 20% 60%;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.15);
+    animation: leafSway 4s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+
+  /* leaves for first stalk */
+  .stalk1 .leaf1 {
+    width: 140px;
+    height: 30px;
+    top: 180px;
+    left: 62%;
+    transform: rotate(30deg);
+    animation-delay: 0s;
+  }
+
+  .stalk1 .leaf2 {
+    width: 120px;
+    height: 27px;
+    top: 220px;
+    left: 48%;
+    transform: rotate(-45deg);
+    animation-delay: 1s;
+  }
+
+  .stalk1 .leaf3 {
+    width: 155px;
+    height: 35px;
+    top: 150px;
+    left: 80%;
+    transform: rotate(10deg);
+    animation-delay: 2s;
+  }
+  .stalk1 .leaf4 {
+    width: 110px;
+    height: 25px;
+    top: 110px;
+    left: 42%;
+    transform: rotate(-20deg);
+    animation-delay: 3s;
+  }
+
+  /* leaves for second stalk */
+  .stalk2 .leaf1 {
+    width: 135px;
+    height: 28px;
+    top: 180px;
+    left: 62%;
+    transform: rotate(25deg);
+    animation-delay: 2s;
+  }
+
+  .stalk2 .leaf2 {
+    width: 115px;
+    height: 25px;
+    top: 220px;
+    left: 45%;
+    transform: rotate(-40deg);
+    animation-delay: 3s;
+  }
+
+  .stalk2 .leaf3 {
+    width: 150px;
+    height: 33px;
+    top: 150px;
+    left: 78%;
+    transform: rotate(8deg);
+    animation-delay: 0s;
+  }
+  .stalk2 .leaf4 {
+    width: 100px;
+    height: 22px;
+    top: 110px;
+    left: 40%;
+    transform: rotate(-15deg);
+    animation-delay: 1s;
+  }
+
+  /* sway animations */
+  @keyframes sway {
+    0%, 100% {
+      transform: rotate(0deg);
+      box-shadow: inset 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+      transform: rotate(7deg);
+      box-shadow: inset 7px 8px 20px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  @keyframes leafSway {
+    0%, 100% {
+      transform: rotate(var(--init-rotate));
+      filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.25));
+    }
+    50% {
+      filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.35));
+    }
+  }
+
+  /* responsiveness */
+  @media (max-width: 850px) {
+    .hero-banner {
+      flex-direction: column;
+      padding: 2rem 2rem;
+      gap: 2rem;
+    }
+    .hero-text {
+      max-width: 100%;
+      text-align: center;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+    }
+    .bamboo-container {
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .hero-text h1 {
+      font-size: 2.2rem;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+    }
+    .bamboo-stalk {
+      width: 48px;
+      height: 280px;
+    }
+    .bamboo-segment {
+      width: 41px;
+      height: 44px;
+      border-top-width: 9px;
+      left: 3.5px;
+    }
+    .bamboo-container {
+      gap: 1.5rem;
+    }
+    .stalk1 .leaf1,
+    .stalk2 .leaf1 {
+      width: 110px;
+      height: 22px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <section class="hero-banner" role="banner" aria-label="Bamboo animated hero banner">
+    <div class="hero-text">
+      <!-- <h1>Embrace the Calm of Bamboo</h1>
+      <p>Discover serenity and style with our beautiful bamboo-inspired hero banner—perfect for nature lovers and green enthusiasts alike.</p> -->
+      <!-- <button class="btn-primary" type="button">Explore Now</button> -->
+    </div>
+   <div class="bamboo-container" aria-hidden="true" >
+      <!-- First bamboo stalk -->
+      <div class="bamboo-stalk stalk1">
+        <div class="bamboo-segment segment1"></div>
+        <div class="bamboo-segment segment2"></div>
+        <div class="bamboo-segment segment3"></div>
+        <div class="bamboo-segment segment4"></div>
+        <div class="bamboo-segment segment5"></div>
+        <!-- leaves -->
+        <div class="leaf leaf1" style="--init-rotate: 30deg;"></div>
+        <div class="leaf leaf2" style="--init-rotate: -45deg;"></div>
+        <div class="leaf leaf3" style="--init-rotate: 10deg;"></div>
+        <div class="leaf leaf4" style="--init-rotate: -20deg;"></div>
+      </div>
+
+      <!-- Second bamboo stalk -->
+      <div class="bamboo-stalk second stalk2">
+        <div class="bamboo-segment segment1"></div>
+        <div class="bamboo-segment segment2"></div>
+        <div class="bamboo-segment segment3"></div>
+        <div class="bamboo-segment segment4"></div>
+        <div class="bamboo-segment segment5"></div>
+        <!-- leaves -->
+        <div class="leaf leaf1" style="--init-rotate: 25deg;"></div>
+        <div class="leaf leaf2" style="--init-rotate: -40deg;"></div>
+        <div class="leaf leaf3" style="--init-rotate: 8deg;"></div>
+        <div class="leaf leaf4" style="--init-rotate: -15deg;"></div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
